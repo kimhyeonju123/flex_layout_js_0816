@@ -1,0 +1,228 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&display=swap');
+
+
+@import "common/reset";
+
+main {
+    width: 100%;
+    height: 100vh;
+    background-color: #333;
+    position: relative;
+    display: flex;
+
+    header {
+        width: 20%;
+        height: 100%;
+        padding: 10vh 5vw;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        // 주축 지정
+        justify-content: space-between;
+        // 무조건 주축 기준으로 정렬
+        align-items: center;
+        position: relative;
+        z-index: 3;
+
+        h1 {
+            color: #fff;
+            font-size: 0;
+
+            i {
+                font-size: 5vw;
+                margin-bottom: 15px;
+            }
+
+            span {
+                display: block;
+                font: normal 1vw/1 "arial";
+            }
+        }
+
+        address {
+            font: normal 11px/1.2 "arial";
+            color: #aaa;
+        }
+    }
+
+    nav {
+        position: absolute;
+        top: 10vh;
+        right: 5vw;
+        z-index: 3;
+
+        ul {
+            display: flex;
+
+            li {
+                a {
+                    font-size: 18px;
+                    color: #bbb;
+                    margin-right: 30px;
+                }
+            }
+        }
+
+    }
+
+    section {
+        width: 80%;
+        height: 100%;
+        display: flex;
+        position: relative;
+        z-index: 1;
+        padding-top: 15vh;
+
+        article {
+            flex: 1;
+            padding: 70px 40px 100px;
+            position: relative;
+            opacity: 0.6;
+            z-index: 1;
+            transition: all 1s;
+
+            &:hover {
+                flex: 1.5;
+                opacity: 1;
+                z-index: 2;
+
+                &::before {
+                    opacity: 1;
+                    left: 0;
+                }
+
+                .inner {
+                    .txt {
+                        h2 {
+                            &::after {
+                                width: 120px;
+                                background-color: orange;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &::before {
+                content: '';
+                display: block;
+                width: 80%;
+                height: 95%;
+                position: absolute;
+                top: 0;
+                left: -200px;
+                opacity: 0;
+                background-color: #444;
+                transition: 1s;
+
+            }
+
+            .inner {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+
+                .txt {
+                    width: 75%;
+
+                    h2 {
+                        font: normal 2vw/1 "Alegreya Sans SC";
+                        color: #fff;
+                        margin-bottom: 40px;
+                        padding-top: 70px;
+                        transition: 1s;
+
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: 40px;
+                            height: 2px;
+                            background-color: #777;
+                            margin-top: 20px;
+                            transition: 1s;
+                        }
+                    }
+
+                    p {
+                        font: 14px/1.4 "arial";
+                        color: #aaa;
+                    }
+                }
+
+                figure {
+                    width: 100%;
+                    height: 15vh;
+                    overflow: hidden;
+                    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+                    transition: 1s;
+
+                    video {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    aside {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        opacity: 0;
+        padding: 20vh 7vw 14vh 20vw;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        transition: 1s;
+        background-color: #222;
+
+        &.on{
+            // 활성화 클래스인 on클래스가 붙었을 때 
+            opacity: 1;
+            left: 0;
+        }
+        .txt {
+            width: 25%;
+            height: 100%;
+
+            h1 {
+                font: normal 6vw/1 "Alegreya Sans SC";
+                color: #ddd;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font: 1.1vw/1.2 "arial";
+                color: #666;
+                margin-bottom: 60px;
+            }
+
+            span {
+                // 커서 포인터가 없으면 마우스가 올라가도 마우스 모양이 변하지 않음
+                cursor: pointer;
+                // ↑ 접근성에 관련된 내용입니다
+                color: orange;
+            }
+        }
+
+        figure {
+            width: 72%;
+            height: 100%;
+
+            video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
